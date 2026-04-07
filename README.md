@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AcresHOME Chamber Platform
 
-## Getting Started
+**AcresHOME Chamber for Business and Economic Development, Inc.**
+*"A Community Based Business & Economic Development Corporation"*
 
-First, run the development server:
+Full-stack community and business platform for the AcresHOME Chamber in Acres Homes, Houston TX.
+
+**Live site:** chamber.chatmaninc.com  
+**Contact:** info@acreshomechamber.com | (832) 433-7916 | 6112 Wheatley St., Houston TX 77091
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 16 (App Router), TypeScript |
+| Styling | Tailwind CSS v4, Radix UI |
+| Backend | Supabase (Postgres + Auth + Storage) |
+| Payments | Stripe Checkout |
+| Email | Resend |
+| Deployment | Vercel |
+
+---
+
+## Quick Start
+
+### 1. Clone
+
+```bash
+git clone https://github.com/howardchatman/acres_homes_chamber.git
+cd acres_homes_chamber
+npm install
+```
+
+### 2. Environment
+
+```bash
+cp .env.local.example .env.local
+# Fill in your Supabase, Stripe, and Resend keys
+```
+
+### 3. Supabase Setup
+
+Run in your Supabase SQL Editor (in order):
+1. `supabase/schema.sql` - creates all tables + RLS policies
+2. `supabase/seed.sql` - adds sample events, classes, market dates
+
+Set admin user:
+```sql
+UPDATE profiles SET role = 'admin' WHERE email = 'your@email.com';
+```
+
+Auth redirect URLs in Supabase dashboard:
+- Site URL: `https://chamber.chatmaninc.com`
+- Redirect: `https://chamber.chatmaninc.com/auth/callback`
+
+### 4. Stripe Setup
+
+Create products in Stripe dashboard for membership tiers, add price IDs to `.env.local`.
+Set webhook endpoint: `https://chamber.chatmaninc.com/api/stripe/webhook`
+
+### 5. Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/app/
+  page.tsx                    Homepage
+  about/                      About page
+  contact/                    Contact page  
+  membership/apply/           Membership application
+  farmers-market/apply/       Vendor application
+  marketplace/                Marketplace (Phase 2)
+  programs/[slug]/register/   Class registration
+  facility-request/           Facility booking
+  events/                     Events listing
+  watch-live/                 Live stream
+  podcast/                    Podcast hub
+  donate/                     Donations (Stripe)
+  login/                      Auth
+  dashboard/admin/            Admin dashboard
+  dashboard/member/           Member dashboard
+  api/                        Form handlers + Stripe
 
-## Learn More
+src/components/
+  layout/navbar.tsx
+  layout/footer.tsx
+  ui/                         Button, Card, Input, etc.
 
-To learn more about Next.js, take a look at the following resources:
+src/lib/
+  supabase/client.ts          Browser Supabase client
+  supabase/server.ts          Server + admin client
+  stripe.ts                   Stripe config + tier definitions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+supabase/
+  schema.sql                  All tables + RLS
+  seed.sql                    Sample data
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Build Phases
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Phase 1 - MVP (Done)
+- Homepage, About, Contact
+- Membership signup + application
+- Farmers Market vendor application
+- Programs + class registration
+- Facility request form
+- Events listing
+- Watch Live (embed-ready)
+- Podcast (coming soon)
+- Donations via Stripe
+- Login / Auth (Supabase)
+- Member dashboard
+- Admin dashboard (all modules)
+- API routes for all forms
+- Supabase schema + RLS + seed data
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Phase 2 - Marketplace
+- Vendor storefronts
+- Product listings
+- Cart + Stripe checkout
+- Order management
+- Vendor dashboard
+- Member directory
+
+### Phase 3 - Media & Growth
+- Podcast episode management
+- Event video archives
+- Sponsor portal
+- Email automation (Resend)
+- Advanced reporting
+
+---
+
+## Deploy to Vercel
+
+1. Push to GitHub (main branch)
+2. Connect repo at vercel.com
+3. Add all env vars in Vercel project settings
+4. Set domain: `chamber.chatmaninc.com`
+
+Vercel auto-deploys on every push to main.
