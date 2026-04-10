@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -60,19 +61,16 @@ export function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-            {/* Logo placeholder — replace with <Image src="/logo.png" ... /> once uploaded */}
-            <div className="flex items-center gap-0.5">
-              <span className="text-white font-bold text-2xl tracking-tight">Acres</span>
-              <span className="text-[#c41230] font-bold text-2xl tracking-tight">HOME</span>
-            </div>
-            <div className="hidden sm:block border-l border-white/20 pl-3">
-              <div className="text-white/80 text-[10px] leading-tight font-medium uppercase tracking-wider">
-                Chamber for Business &
-              </div>
-              <div className="text-white/80 text-[10px] leading-tight font-medium uppercase tracking-wider">
-                Economic Development, Inc.
-              </div>
+          <Link href="/" className="flex items-center shrink-0">
+            <div className="bg-white rounded-md px-2 py-1">
+              <Image
+                src="/images/logo.png"
+                alt="AcresHOME Chamber for Business and Economic Development, Inc."
+                width={160}
+                height={46}
+                className="h-10 w-auto object-contain"
+                priority
+              />
             </div>
           </Link>
 

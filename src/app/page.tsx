@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Store, GraduationCap, Heart, Building2, Video, CalendarDays,
   ShoppingBag, Leaf, Users, Star, ArrowRight, MapPin, CheckCircle2,
@@ -50,35 +51,50 @@ export default function HomePage() {
     <div className="flex flex-col">
       {/* HERO */}
       <section className="relative bg-[#1a1a1a] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "linear-gradient(45deg, #c41230 25%, transparent 25%), linear-gradient(-45deg, #c41230 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #c41230 75%), linear-gradient(-45deg, transparent 75%, #c41230 75%)", backgroundSize: "20px 20px", backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px" }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-[#c41230] text-white text-sm font-semibold px-3 py-1 rounded-full mb-5">
-              Acres Homes · Houston, TX
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="inline-block bg-[#c41230] text-white text-sm font-semibold px-3 py-1 rounded-full mb-5">
+                Acres Homes · Houston, TX
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+                Building Business,{" "}
+                <span className="text-[#c41230]">Community,</span>{" "}
+                and Opportunity in Acres Homes
+              </h1>
+              <p className="text-xl text-white/80 leading-relaxed mb-8">
+                A digital home for local businesses, market vendors, training programs, community events,
+                and everything that makes Acres Homes thrive.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild variant="red" size="xl"><Link href="/membership">Join the Chamber</Link></Button>
+                <Button asChild variant="white" size="xl"><Link href="/marketplace">Explore Marketplace</Link></Button>
+                <Button asChild size="xl" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#1a1a1a]">
+                  <Link href="/farmers-market">Farmers Market</Link>
+                </Button>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-8">
+                {[{ value: "200+", label: "Member Businesses" }, { value: "50+", label: "Market Vendors" }, { value: "1,000+", label: "Community Members Served" }].map((stat) => (
+                  <div key={stat.label}>
+                    <div className="text-3xl font-bold text-[#c41230]">{stat.value}</div>
+                    <div className="text-white/60 text-sm">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Building Business,{" "}
-              <span className="text-[#c41230]">Community,</span>{" "}
-              and Opportunity in Acres Homes
-            </h1>
-            <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-2xl">
-              A digital home for local businesses, market vendors, training programs, community events,
-              and everything that makes Acres Homes thrive.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild variant="red" size="xl"><Link href="/membership">Join the Chamber</Link></Button>
-              <Button asChild variant="white" size="xl"><Link href="/marketplace">Explore Marketplace</Link></Button>
-              <Button asChild size="xl" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#1a1a1a]">
-                <Link href="/farmers-market">Farmers Market</Link>
-              </Button>
-            </div>
-            <div className="mt-12 flex flex-wrap gap-8">
-              {[{ value: "200+", label: "Member Businesses" }, { value: "50+", label: "Market Vendors" }, { value: "1,000+", label: "Community Members Served" }].map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-3xl font-bold text-[#c41230]">{stat.value}</div>
-                  <div className="text-white/60 text-sm">{stat.label}</div>
-                </div>
-              ))}
+            <div className="hidden lg:block relative">
+              <Image
+                src="/images/gallery/community-6.jpg"
+                alt="AcresHOME Chamber gala event"
+                width={600}
+                height={480}
+                className="rounded-2xl object-cover w-full h-105 shadow-2xl"
+                priority
+              />
+              <div className="absolute -bottom-4 -left-4 bg-[#c41230] text-white rounded-xl px-5 py-3 shadow-lg">
+                <div className="text-2xl font-bold">Est. 2018</div>
+                <div className="text-sm text-white/80">Serving Acres Homes</div>
+              </div>
             </div>
           </div>
         </div>
@@ -93,7 +109,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {quickActions.map((action, i) => (
-              <Link key={action.href + i} href={action.href} className="group bg-white rounded-xl border border-[#e0d8ce] p-6 hover:shadow-lg hover:border-[#c41230]/30 transition-all duration-200">
+              <Link key={action.href + i} href={action.href} className="group bg-white rounded-xl border border-border p-6 hover:shadow-lg hover:border-[#c41230]/30 transition-all duration-200">
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${i % 2 === 0 ? "bg-[#1a1a1a]" : "bg-[#c41230]"} text-white mb-4`}>
                   <action.icon className="h-6 w-6" />
                 </div>
@@ -112,6 +128,19 @@ export default function HomePage() {
       <section className="py-16 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <Image
+                src="/images/events/luncheon-dr-wright.jpg"
+                alt="AcresHOME Chamber quarterly luncheon"
+                width={600}
+                height={420}
+                className="rounded-2xl object-cover w-full h-80 shadow-lg"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-[#1a1a1a] text-white rounded-xl px-5 py-3 shadow-lg hidden sm:block">
+                <div className="text-lg font-bold">First Quarter Luncheon</div>
+                <div className="text-sm text-white/70">Bringing businesses together</div>
+              </div>
+            </div>
             <div>
               <div className="inline-block bg-[#c41230]/10 text-[#c41230] text-sm font-semibold px-3 py-1 rounded-full mb-4">About the Chamber</div>
               <h2 className="text-3xl font-bold text-[#1a1a1a] mb-4">Rooted in Acres Homes. Built for the Community.</h2>
@@ -121,19 +150,51 @@ export default function HomePage() {
               <p className="text-[#6b6560] mb-6 leading-relaxed">
                 From our weekly farmers market to business training programs, facility hosting, and advocacy work, we are a hub for connection, growth, and opportunity in Acres Homes.
               </p>
+              <div className="space-y-2 mb-6">
+                {membershipBenefits.map((benefit) => (
+                  <div key={benefit} className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-[#c41230] shrink-0 mt-0.5" />
+                    <span className="text-brand-gray text-sm">{benefit}</span>
+                  </div>
+                ))}
+              </div>
               <div className="flex gap-4 flex-wrap">
                 <Button asChild variant="default"><Link href="/about">Learn Our Story</Link></Button>
                 <Button asChild variant="outline"><Link href="/membership">Join the Chamber</Link></Button>
               </div>
             </div>
-            <div className="space-y-3">
-              {membershipBenefits.map((benefit) => (
-                <div key={benefit} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-[#c41230] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#3d3d3d]">{benefit}</span>
-                </div>
-              ))}
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COMMUNITY PHOTOS */}
+      <section className="py-16 px-4 sm:px-6 bg-[#1a1a1a]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-white mb-3">Community in Action</h2>
+            <p className="text-white/60 max-w-xl mx-auto">From farmers markets to business forums — this is Acres Homes.</p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              { src: "/images/gallery/community-1.jpg", alt: "D'Shack Gardens vendor at market" },
+              { src: "/images/gallery/community-7.jpg", alt: "Chamber networking event" },
+              { src: "/images/gallery/community-5.jpg", alt: "AI and workforce development workshop" },
+              { src: "/images/gallery/community-3.jpg", alt: "Indoor farmers market fresh produce" },
+            ].map((photo) => (
+              <div key={photo.src} className="relative overflow-hidden rounded-xl aspect-square">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Button asChild variant="white" size="lg">
+              <Link href="/events">See All Events</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -150,7 +211,7 @@ export default function HomePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {programs.map((program, i) => (
-              <Link key={program.title} href={program.href} className="group bg-white rounded-xl border border-[#e0d8ce] overflow-hidden hover:shadow-lg transition-all duration-200">
+              <Link key={program.title} href={program.href} className="group bg-white rounded-xl border border-border overflow-hidden hover:shadow-lg transition-all duration-200">
                 <div className={`p-6 ${i % 2 === 0 ? "bg-[#1a1a1a]" : "bg-[#c41230]"}`}>
                   <program.icon className="h-8 w-8 text-white" />
                 </div>
@@ -197,6 +258,27 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section className="py-14 px-4 sm:px-6 bg-[#f9f6f2] border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">Community Partners & Sponsors</h2>
+            <p className="text-[#6b6560]">Organizations working alongside us to strengthen Acres Homes.</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-10">
+            <div className="bg-white rounded-xl px-8 py-5 shadow-sm border border-border flex items-center justify-center">
+              <Image src="/images/partners/heb.jpg" alt="H-E-B" width={120} height={60} className="h-12 w-auto object-contain" />
+            </div>
+            <div className="bg-white rounded-xl px-8 py-5 shadow-sm border border-border flex items-center justify-center">
+              <Image src="/images/partners/lone-star-college.png" alt="Lone Star College Houston North" width={180} height={60} className="h-12 w-auto object-contain" />
+            </div>
+            <div className="bg-white rounded-xl px-8 py-5 shadow-sm border border-border flex items-center justify-center">
+              <Image src="/images/partners/afram-news.png" alt="Afram News" width={140} height={60} className="h-12 w-auto object-contain" />
+            </div>
           </div>
         </div>
       </section>

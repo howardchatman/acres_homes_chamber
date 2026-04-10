@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Leaf, MapPin, Clock, CalendarDays, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -63,13 +64,30 @@ export default function FarmersMarketPage() {
               <span className="text-sm font-medium">6112 Wheatley St., Houston TX</span>
             </div>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 mb-10">
             <Button asChild variant="red" size="lg"><Link href="/farmers-market/apply">Apply to be a Vendor</Link></Button>
             <Button asChild size="lg" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#1a1a1a]">
               <a href="https://maps.google.com/?q=6112+Wheatley+St+Houston+TX+77091" target="_blank" rel="noopener noreferrer">
                 Get Directions
               </a>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Market Photos */}
+      <section className="py-10 px-4 sm:px-6 bg-[#f9f6f2]">
+        <div className="max-w-7xl mx-auto grid grid-cols-3 gap-3">
+          <div className="relative rounded-xl overflow-hidden aspect-video col-span-2">
+            <Image src="/images/gallery/community-1.jpg" alt="D'Shack Gardens vendor at Acres Homes Farmers Market" fill className="object-cover" />
+          </div>
+          <div className="flex flex-col gap-3">
+            <div className="relative rounded-xl overflow-hidden flex-1">
+              <Image src="/images/gallery/community-3.jpg" alt="Fresh produce at the farmers market" fill className="object-cover" />
+            </div>
+            <div className="relative rounded-xl overflow-hidden flex-1">
+              <Image src="/images/farmers-market.jpg" alt="Community members at the farmers market" fill className="object-cover" />
+            </div>
           </div>
         </div>
       </section>

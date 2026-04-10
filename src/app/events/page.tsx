@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CalendarDays, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -40,6 +41,21 @@ export default function EventsPage() {
           <p className="text-white/75 text-lg max-w-2xl">
             From market Saturdays to business forums and live-streamed speaker sessions — there is always something happening in Acres Homes.
           </p>
+        </div>
+      </section>
+
+      {/* Event photo strip */}
+      <section className="py-8 px-4 sm:px-6 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-3 gap-3">
+          {[
+            { src: "/images/events/banquet.jpg", alt: "AcresHOME Chamber awards banquet" },
+            { src: "/images/events/luncheon-dr-wright.jpg", alt: "First quarter luncheon" },
+            { src: "/images/gallery/community-6.jpg", alt: "Chamber gala celebration" },
+          ].map((photo) => (
+            <div key={photo.src} className="relative rounded-xl overflow-hidden h-48">
+              <Image src={photo.src} alt={photo.alt} fill className="object-cover" />
+            </div>
+          ))}
         </div>
       </section>
 
