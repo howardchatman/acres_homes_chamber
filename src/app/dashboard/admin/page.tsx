@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Admin Dashboard" };
 
 async function getStats(supabase: Awaited<ReturnType<typeof createClient>>) {

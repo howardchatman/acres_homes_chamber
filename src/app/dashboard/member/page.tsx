@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Store, CalendarDays, ShoppingBag, LogOut } from "lucide-react";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Member Dashboard" };
 
 export default async function MemberDashboardPage() {
