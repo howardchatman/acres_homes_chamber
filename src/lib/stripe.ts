@@ -1,9 +1,15 @@
 import Stripe from "stripe";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-03-31.basil",
-  typescript: true,
-});
+// Lazy — only instantiated when called, not at module load / build time
+export function getStripe(): Stripe {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("STRIPE_SECRET_KEY is not configured");
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2025-03-31.basil",
+    typescript: true,
+  });
+}
 
 export const MEMBERSHIP_TIERS = [
   {

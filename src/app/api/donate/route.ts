@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { createAdminClient } from "@/lib/supabase/server";
 
 export async function POST(request: NextRequest) {
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://chamber.chatmaninc.com";
 
     // Create Stripe Checkout session
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       mode: frequency === "monthly" ? "subscription" : "payment",
       payment_method_types: ["card"],
       line_items: [
