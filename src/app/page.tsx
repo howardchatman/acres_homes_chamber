@@ -100,6 +100,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* APRIL 18 PROMO */}
+      <section className="py-16 px-4 sm:px-6 bg-yellow-500">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="inline-block bg-black/20 text-black text-sm font-bold px-3 py-1 rounded-full mb-4">
+                April 18, 2026 · 6112 Wheatley St. · 10 AM – 4 PM
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
+                2nd Annual Sunflower Block Party &amp; Fundraiser
+              </h2>
+              <p className="text-black/75 text-lg mb-4 leading-relaxed">
+                A full day of community — BBQ Brisket Cook-Off, Inaugural Vegan Cook-Off, STEM Zone for Kids
+                powered by AABE, basketball, kickball, dominoes, spades, the farmers market, and more.
+              </p>
+              <p className="text-black/70 mb-6 text-sm">
+                Presented by the Metallic Sunflower Foundation &amp; AcresHOME Chamber. As featured on{" "}
+                <strong>FOX 26 Houston</strong> and in <strong>OutSmart Magazine</strong>.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild className="bg-[#1a1a1a] hover:bg-black text-white font-bold" size="lg">
+                  <Link href="/metallic-sunflower">See All Events</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="border-black text-black hover:bg-black hover:text-white">
+                  <a href="https://www.themetallicsunflowerfoundation.org/msf-applications/" target="_blank" rel="noopener noreferrer">
+                    Volunteer / Apply
+                  </a>
+                </Button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { src: "/images/msf/block-party-main.jpg", alt: "Sunflower Block Party" },
+                { src: "/images/msf/brisket-cookoff.jpg", alt: "Brisket Cook-Off" },
+                { src: "/images/msf/vegan-cookoff-food.jpg", alt: "Vegan Cook-Off" },
+                { src: "/images/msf/stem-zone.jpg", alt: "STEM Zone for Kids" },
+              ].map((img) => (
+                <div key={img.src} className="relative rounded-xl overflow-hidden aspect-square shadow-md">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* QUICK ACTIONS */}
       <section className="py-16 px-4 sm:px-6 bg-[#f9f6f2]">
         <div className="max-w-7xl mx-auto">
@@ -328,52 +374,6 @@ export default function HomePage() {
               <p className="text-white/90 mb-4">Conversations about business, community, and the future of Acres Homes. Coming soon.</p>
               <span className="inline-flex items-center gap-2 font-semibold text-white group-hover:gap-3 transition-all">Learn More <ArrowRight className="h-4 w-4" /></span>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* APRIL 18 PROMO */}
-      <section className="py-16 px-4 sm:px-6 bg-yellow-500">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="inline-block bg-black/20 text-black text-sm font-bold px-3 py-1 rounded-full mb-4">
-                April 18, 2026 · 6112 Wheatley St. · 10 AM – 4 PM
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
-                2nd Annual Sunflower Block Party &amp; Fundraiser
-              </h2>
-              <p className="text-black/75 text-lg mb-4 leading-relaxed">
-                A full day of community — BBQ Brisket Cook-Off, Inaugural Vegan Cook-Off, STEM Zone for Kids
-                powered by AABE, basketball, kickball, dominoes, spades, the farmers market, and more.
-              </p>
-              <p className="text-black/70 mb-6 text-sm">
-                Presented by the Metallic Sunflower Foundation &amp; AcresHOME Chamber. As featured on{" "}
-                <strong>FOX 26 Houston</strong> and in <strong>OutSmart Magazine</strong>.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Button asChild className="bg-[#1a1a1a] hover:bg-black text-white font-bold" size="lg">
-                  <Link href="/metallic-sunflower">See All Events</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="border-black text-black hover:bg-black hover:text-white">
-                  <a href="https://www.themetallicsunflowerfoundation.org/msf-applications/" target="_blank" rel="noopener noreferrer">
-                    Volunteer / Apply
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { src: "/images/msf/block-party-main.jpg", alt: "Sunflower Block Party" },
-                { src: "/images/msf/brisket-cookoff.jpg", alt: "Brisket Cook-Off" },
-                { src: "/images/msf/vegan-cookoff-food.jpg", alt: "Vegan Cook-Off" },
-                { src: "/images/msf/stem-zone.jpg", alt: "STEM Zone for Kids" },
-              ].map((img) => (
-                <div key={img.src} className="relative rounded-xl overflow-hidden aspect-square shadow-md">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover object-top" />
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
