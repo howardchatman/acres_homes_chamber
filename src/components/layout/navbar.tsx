@@ -31,6 +31,15 @@ const navLinks = [
   { label: "Programs", href: "/programs" },
   { label: "Events", href: "/events" },
   { label: "Watch Live", href: "/watch-live" },
+  {
+    label: "MSF Foundation",
+    href: "/metallic-sunflower",
+    children: [
+      { label: "About the Foundation", href: "/metallic-sunflower" },
+      { label: "April 18 Block Party", href: "/metallic-sunflower#events" },
+      { label: "Volunteer / Apply", href: "https://www.themetallicsunflowerfoundation.org/msf-applications/" },
+    ],
+  },
   { label: "Donate", href: "/donate" },
 ];
 
